@@ -900,4 +900,15 @@ async def on_app_command_error(interaction: discord.Interaction, error: app_comm
 if __name__ == "__main__":
     if not TOKEN:
         raise SystemExit("DISCORD_TOKEN is missing. Add it to your .env file.")
+
+  import time, sys, discord
+
+try:
+    bot.run(TOKEN, log_handler=None)
+except discord.HTTPException as e:
+    if e.status == 429:
+        print("Rate limited by Discord/Cloudflare. Sleeping 30 min.")
+        time.sleep(1800)
+    sys.exit(1)
+  
     bot.run(TOKEN, log_handler=None)
