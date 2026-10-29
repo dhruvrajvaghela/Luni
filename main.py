@@ -21,7 +21,7 @@ import discord
 from discord.ext import commands
 from discord import app_commands
 from dotenv import load_dotenv
-
+import time, sys, discord
 load_dotenv()
 
 TOKEN = os.getenv("DISCORD_TOKEN", "").strip()
@@ -899,9 +899,7 @@ async def on_app_command_error(interaction: discord.Interaction, error: app_comm
 
 if __name__ == "__main__":
     if not TOKEN:
-        raise SystemExit("DISCORD_TOKEN is missing. Add it to your .env file.")
-
-  import time, sys, discord
+        raise SystemExit("DISCORD_TOKEN is missing. Add it to your .env file.") 
 
 try:
     bot.run(TOKEN, log_handler=None)
